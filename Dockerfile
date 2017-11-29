@@ -21,6 +21,7 @@ RUN apt-get -qq update && apt-get -qq install -y \
   python-pip \
   software-properties-common \
   sudo \
+  tmux \
   unzip \
   wget \
   zip
