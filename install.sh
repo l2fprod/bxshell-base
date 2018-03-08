@@ -23,6 +23,7 @@ apt-get -qq update && apt-get -qq install -y \
   sudo \
   tmux \
   unzip \
+  vim \
   wget \
   zip
 
