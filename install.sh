@@ -5,6 +5,7 @@ apt-get -qq update && apt-get -qq install -y \
   ca-certificates \
   curl \
   figlet \
+  graphviz \
   inetutils-ping \
   jq \
   libasound2 \
