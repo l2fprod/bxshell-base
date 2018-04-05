@@ -1,3 +1,6 @@
+#!/bin/bash
+set -e
+
 echo "Installing dependencies..."
 apt-get -qq update && apt-get -qq install -y \
   apt-transport-https \
@@ -20,6 +23,7 @@ apt-get -qq update && apt-get -qq install -y \
   python-virtualenv \
   python-setuptools \
   python-pip \
+  silversearcher-ag \
   software-properties-common \
   sudo \
   tmux \
