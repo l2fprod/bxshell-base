@@ -60,6 +60,10 @@ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 echo "Colors for nano"
 curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 
+# Powerline
+echo "Powerline"
+pip install powerline-shell
+
 # Cleanup
 echo "Cleanup"
 apt-get clean && rm -rf /var/lib/apt/lists/*
