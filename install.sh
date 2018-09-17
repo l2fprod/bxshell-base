@@ -8,6 +8,7 @@ apt-get -qq update && apt-get -qq install -y \
   ca-certificates \
   curl \
   figlet \
+  gettext \
   graphviz \
   inetutils-ping \
   jq \
