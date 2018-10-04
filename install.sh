@@ -19,6 +19,7 @@ apt-get -qq update && apt-get -qq install -y \
   libx11-xcb1 \
   libxss1 \
   libxtst-dev \
+  locales \
   nano \
   python \
   python-virtualenv \
@@ -64,6 +65,10 @@ curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 # Powerline
 echo "Powerline"
 pip install powerline-shell
+
+# Locale
+echo "Locale"
+locale-gen en_US.UTF-8
 
 # Cleanup
 echo "Cleanup"
