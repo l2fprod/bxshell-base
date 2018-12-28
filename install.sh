@@ -34,6 +34,10 @@ apt-get -qq update && apt-get -qq install -y \
   wget \
   zip
 
+# Locale
+echo "Locale"
+locale-gen en_US.UTF-8
+
 # Docker in Docker
 echo "Docker in Docker"
 apt-get -qq remove docker docker-engine docker.io
@@ -66,9 +70,8 @@ curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 echo "Powerline"
 pip install powerline-shell
 
-# Locale
-echo "Locale"
-locale-gen en_US.UTF-8
+# yq - jq for yaml
+pip install yq
 
 # Cleanup
 echo "Cleanup"
