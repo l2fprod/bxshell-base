@@ -57,6 +57,11 @@ curl -LO "https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_lin
   chmod 755 terraform && \
   mv terraform /usr/local/bin
 
+# Ansible
+echo "Ansible"
+apt-add-repository --yes --update ppa:ansible/ansible
+apt-get install -qq -y ansible
+
 # Yarn
 echo "Yarn"
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
