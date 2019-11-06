@@ -25,6 +25,7 @@ apt-get -qq update && apt-get -qq install -y \
   python-virtualenv \
   python-setuptools \
   python-pip \
+  python3-pip \
   silversearcher-ag \
   software-properties-common \
   sudo \
