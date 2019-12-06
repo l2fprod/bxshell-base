@@ -4,6 +4,7 @@ set -e
 echo "Installing dependencies..."
 apt-get -qq update && apt-get -qq install -y \
   apt-transport-https \
+  apache2-utils \
   bash-completion \
   ca-certificates \
   curl \
