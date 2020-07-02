@@ -66,6 +66,9 @@ unzip terraform_0.11.14_linux_amd64.zip terraform
 mv terraform /usr/local/bin/terraform-0.11.14
 rm -f terraform_0.11.14_linux_amd64.zip
 
+echo "Blast Radius"
+pip3 install blastradius
+
 # Ansible
 echo "Ansible"
 apt-add-repository --yes --update ppa:ansible/ansible
