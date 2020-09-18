@@ -23,6 +23,7 @@ apt-get -qq update && apt-get -qq install -y \
   locales \
   nano \
   python \
+  python-argcomplete \
   python-virtualenv \
   python-setuptools \
   python-pip \
@@ -35,6 +36,9 @@ apt-get -qq update && apt-get -qq install -y \
   vim \
   wget \
   zip
+
+# argcomplete
+activate-global-python-argcomplete
 
 # Locale
 echo "Locale"
