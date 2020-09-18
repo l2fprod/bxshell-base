@@ -37,9 +37,6 @@ apt-get -qq update && apt-get -qq install -y \
   wget \
   zip
 
-# argcomplete
-activate-global-python-argcomplete
-
 # Locale
 echo "Locale"
 locale-gen en_US.UTF-8
@@ -99,6 +96,9 @@ pip install powerline-shell
 
 # yq - jq for yaml
 pip install yq
+
+# argcomplete
+activate-global-python-argcomplete
 
 # Cleanup
 echo "Cleanup"
