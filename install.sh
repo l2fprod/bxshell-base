@@ -86,6 +86,11 @@ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
   apt-get -qq update && apt-get install -qq -y yarn
 
+# MC for S3
+echo ">> minio"
+wget -O /usr/local/bin/mc https://dl.min.io/client/mc/release/linux-amd64/mc
+chmod +x /usr/local/bin/mc
+
 # Colors for nano
 echo "Colors for nano"
 curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
