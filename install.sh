@@ -23,13 +23,6 @@ apt -qq update && apt -qq install -y \
   graphviz \
   inetutils-ping \
   jq \
-  libasound2 \
-  libgconf2-dev \
-  libgtkextra-dev \
-  libnss3 \
-  libx11-xcb1 \
-  libxss1 \
-  libxtst-dev \
   locales \
   nano \
   python3-argcomplete \
