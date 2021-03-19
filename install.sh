@@ -13,7 +13,7 @@ function get_most_recent_matching {
 }
 
 echo ">> Installing dependencies..."
-apt -qq update && apt -qq install -y \
+apt-get -qq update && apt-get -qq install -y \
   apache2-utils \
   bash-completion \
   ca-certificates \
@@ -45,7 +45,7 @@ locale-gen en_US.UTF-8
 # Docker in Docker
 echo ">> Docker in Docker"
 apt remove docker docker-engine docker.io containerd runc || true
-apt -qq -y install \
+apt-get -qq -y install \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -55,8 +55,8 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/
 echo \
   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
-apt -qq update
-apt -qq -y install docker-ce docker-ce-cli containerd.io
+apt-get -qq update
+apt-get -qq -y install docker-ce docker-ce-cli containerd.io
 
 
 echo ">> TFSwitch"
