@@ -13,8 +13,7 @@ function get_most_recent_matching {
 }
 
 echo ">> Installing dependencies..."
-apt-get -qq update && apt-get -qq install -y \
-  apt-transport-https \
+apt -qq update && apt -qq install -y \
   apache2-utils \
   bash-completion \
   ca-certificates \
@@ -33,12 +32,10 @@ apt-get -qq update && apt-get -qq install -y \
   libxtst-dev \
   locales \
   nano \
-  python \
-  python-argcomplete \
-  python-virtualenv \
-  python-setuptools \
-  python-pip \
+  python3-argcomplete \
   python3-pip \
+  python3-setuptools \
+  python3-virtualenv \
   silversearcher-ag \
   software-properties-common \
   sudo \
@@ -54,31 +51,20 @@ locale-gen en_US.UTF-8
 
 # Docker in Docker
 echo ">> Docker in Docker"
-apt-get -qq remove docker docker-engine docker.io
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
-apt-get -qq update && apt-get -qq -y install docker-ce
+apt remove docker docker-engine docker.io containerd runc || true
+apt -qq -y install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo \
+  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+apt -qq update
+apt -qq -y install docker-ce docker-ce-cli containerd.io
 
-# Terraform
-#latest_terraform_version=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M '.current_version')
-latest_terraform_version="0.12.29"
-echo ">> Terraform ($latest_terraform_version -- marking as latest)"
-
-curl -LO "https://releases.hashicorp.com/terraform/${latest_terraform_version}/terraform_${latest_terraform_version}_linux_amd64.zip"
-unzip terraform_${latest_terraform_version}_linux_amd64.zip terraform
-mv terraform /usr/local/bin/terraform-${latest_terraform_version}
-rm -f terraform_${latest_terraform_version}_linux_amd64.zip
-ln -s /usr/local/bin/terraform-${latest_terraform_version} /usr/local/bin/terraform-latest
-ln -s /usr/local/bin/terraform-${latest_terraform_version} /usr/local/bin/terraform
-
-echo ">> Terraform (0.11.14)"
-curl -LO "https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_linux_amd64.zip"
-unzip terraform_0.11.14_linux_amd64.zip terraform
-mv terraform /usr/local/bin/terraform-0.11.14
-rm -f terraform_0.11.14_linux_amd64.zip
 
 echo ">> TFSwitch"
 curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh | bash
@@ -90,7 +76,7 @@ chmod +x terraform-docs
 mv terraform-docs /usr/local/bin/
 
 echo ">> Blast Radius"
-pip3 install blastradius
+pip install blastradius
 
 # Ansible
 echo ">> Ansible"
@@ -121,7 +107,7 @@ echo ">> yq"
 pip install yq
 
 # argcomplete
-activate-global-python-argcomplete
+activate-global-python-argcomplete3
 
 # Cleanup
 echo ">> Cleanup"
