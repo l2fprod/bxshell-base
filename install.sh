@@ -84,7 +84,7 @@ echo ">> TFSwitch"
 curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh | bash
 
 echo ">> terraform-docs"
-curl -LO $(get_most_recent_matching "terraform-docs/terraform-docs" ".*-linux-amd64")
+curl -LO $(get_most_recent_matching "terraform-docs/terraform-docs" ".*-linux-amd64$")
 mv terraform-docs-*-linux-amd64 terraform-docs
 chmod +x terraform-docs
 mv terraform-docs /usr/local/bin/
