@@ -13,17 +13,21 @@ function get_most_recent_matching {
 }
 
 echo ">> Installing dependencies..."
-apt-get -qq update && apt-get -qq install -y \
+apt-get -qq update
+PACKAGES=(
   apache2-utils \
+  apt-transport-https \
   bash-completion \
   ca-certificates \
   curl \
   figlet \
   gettext \
   graphviz \
+  gnupg \
   inetutils-ping \
   jq \
   locales \
+  lsb-release \
   nano \
   python3-argcomplete \
   python3-pip \
@@ -36,7 +40,12 @@ apt-get -qq update && apt-get -qq install -y \
   unzip \
   vim \
   wget \
-  zip
+  zip \
+)
+
+for package in "${PACKAGES[@]}"; do
+  apt-get install -y $package
+done
 
 # Locale
 echo ">> Locale"
@@ -45,12 +54,6 @@ locale-gen en_US.UTF-8
 # Docker in Docker
 echo ">> Docker in Docker"
 apt remove docker docker-engine docker.io containerd runc || true
-apt-get -qq -y install \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 echo \
   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
