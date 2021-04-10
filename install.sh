@@ -44,7 +44,8 @@ PACKAGES=(
 )
 
 for package in "${PACKAGES[@]}"; do
-  apt-get install -y $package
+  echo "Processing $package..."
+  apt-get install -qq -y $package || true
 done
 
 # Locale
