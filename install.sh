@@ -80,6 +80,11 @@ echo ">> Ansible"
 apt-add-repository --yes --update ppa:ansible/ansible
 apt-get install -qq -y ansible
 
+# Latest Git
+echo ">> Git"
+add-apt-repository --yes --update ppa:git-core/ppa
+apt install -qq -y git
+
 # Yarn
 echo ">> Yarn"
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
