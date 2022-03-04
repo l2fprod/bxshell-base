@@ -80,6 +80,11 @@ echo ">> Ansible"
 apt-add-repository --yes --update ppa:ansible/ansible
 apt-get install -qq -y ansible
 
+# Packer
+curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
+apt-add-repository --yes --update "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+apt install -qq -y packer
+
 # Latest Git
 echo ">> Git"
 add-apt-repository --yes --update ppa:git-core/ppa
