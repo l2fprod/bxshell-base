@@ -116,6 +116,9 @@ pip install yq
 # argcomplete
 activate-global-python-argcomplete3
 
+# Enable GIT for all directories to avoid prompt like `fatal: unsafe repository ('/app' is owned by someone else)`
+git config --global --add safe.directory '*'
+
 # Cleanup
 echo ">> Cleanup"
 apt-get clean && rm -rf /var/lib/apt/lists/*
